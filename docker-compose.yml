@@ -37,6 +37,9 @@ services:
       CRAWLAB_API_ADDRESS: "http://153.127.142.41:8000"
       CRAWLAB_MONGO_HOST: "mongo"
       CRAWLAB_REDIS_ADDRESS: "redis"
+    ports:
+      - 8080:8080
+
   mongo:
     image: mongo:latest
     restart: always

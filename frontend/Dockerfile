@@ -1,23 +1,15 @@
-FROM node:8.16.0-alpine AS frontend-build
+#FROM node:8.16.0-alpine AS frontend-build
 
-ADD . /app
-WORKDIR /app
+#ADD . /app
+#WORKDIR /app
 
 # install frontend
-RUN npm install -g yarn \
-	&& yarn install
+#RUN npm install -g yarn \
+#	&& yarn install
 
-RUN npm run build:prod
+#RUN npm run build:prod
 
-FROM node:8.16.0-alpine
+FROM nginx:1.15
 
-#RUN apk update
-RUN apk add nginx
-COPY --from=frontend-build /app/dist /app/dist
-COPY --from=frontend-build /app/conf/crawlab.conf /etc/nginx/conf.d
-RUN nginx
-COPY ./dist /usr/share/nginx/html
-
-EXPOSE 80
-EXPOSE 8080
-
+COPY ./dist /app/dist
+COPY ./conf/crawlab.conf /etc/nginx/conf.d
