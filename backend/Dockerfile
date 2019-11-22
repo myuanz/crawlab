@@ -4,7 +4,7 @@ WORKDIR /go/src/app
 COPY . .
 
 ENV GO111MODULE on
-ENV GOPROXY https://mirrors.aliyun.com/goproxy/
+#ENV GOPROXY https://mirrors.aliyun.com/goproxy/
 
 RUN go mod vendor
 RUN go install -v ./...
