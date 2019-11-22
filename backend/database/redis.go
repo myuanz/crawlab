@@ -4,6 +4,7 @@ import (
 	"context"
 	"crawlab/entity"
 	"crawlab/utils"
+	"fmt"
 	"github.com/apex/log"
 	"github.com/gomodule/redigo/redis"
 	"github.com/spf13/viper"
@@ -48,6 +49,8 @@ func (r *Redis) HSet(collection string, key string, value string) error {
 
 	if _, err := c.Do("HSET", collection, key, value); err != nil {
 		debug.PrintStack()
+		log.Info(fmt.Sprintf("HSet: collection: %s, key: %s, value: %s", collection, key, value))
+
 		return err
 	}
 	return nil
