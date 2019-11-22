@@ -9,7 +9,7 @@ ENV GO111MODULE on
 RUN go mod vendor
 RUN go install -v ./...
 
-FROM alpine:latest
+FROM golang:1.12
 WORKDIR /root
 COPY --from=build /go/src/app .
 COPY --from=build /go/bin/crawlab /usr/local/bin

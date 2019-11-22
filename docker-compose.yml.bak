@@ -6,7 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      CRAWLAB_API_ADDRESS: "http://153.127.142.41:8000"
+      CRAWLAB_API_ADDRESS: "http://0.0.0.0:8000"
       CRAWLAB_SERVER_MASTER: "Y"
       CRAWLAB_MONGO_HOST: "mongo"
       CRAWLAB_REDIS_ADDRESS: "redis"
