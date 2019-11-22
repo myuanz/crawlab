@@ -9,15 +9,15 @@ RUN npm install -g yarn \
 
 RUN npm run build:prod
 
-FROM alpine
+FROM node:8.16.0-alpine
 
 #RUN apk update
 RUN apk add nginx
 COPY --from=frontend-build /app/dist /app/dist
 COPY --from=frontend-build /app/conf/crawlab.conf /etc/nginx/conf.d
-#RUN nginx -s start
-#COPY ./dist /usr/share/nginx/html
+RUN nginx -s start
+COPY ./dist /usr/share/nginx/html
 
-#EXPOSE 80
-#EXPOSE 8080
+EXPOSE 80
+EXPOSE 8080
 

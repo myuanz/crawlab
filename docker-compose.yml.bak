@@ -28,6 +28,20 @@ services:
     depends_on:
       - mongo
       - redis
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      CRAWLAB_API_ADDRESS: "http://153.127.142.41:8000"
+      CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_REDIS_ADDRESS: "redis"
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
   mongo:
     image: mongo:latest
     restart: always
