@@ -9,10 +9,14 @@ ENV GO111MODULE on
 RUN go mod vendor
 RUN go install -v ./...
 
-FROM golang:1.12
+FROM python:3.8
+
 WORKDIR /root
 COPY --from=build /go/src/app .
 COPY --from=build /go/bin/crawlab /usr/local/bin
+
+RUN pip install -r req.txt
+
 
 EXPOSE 8000
 CMD ["crawlab"]
