@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../router'
 
-let baseUrl = process.env.VUE_APP_BASE_URL ? process.env.VUE_APP_BASE_URL : window.location.host.split(':')[0] + ":8000"
+let baseUrl = process.env.VUE_APP_BASE_URL ? process.env.VUE_APP_BASE_URL : 'http://' + window.location.host.split(':')[0] + ":8000"
 
 const request = async (method, path, params, data, others = {}) => {
   try {
